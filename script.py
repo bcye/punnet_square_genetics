@@ -22,13 +22,10 @@ def generate_offsprings(father_gametes, mother_gametes):
 
 
 def prettify_offspring(offsprings):
-    # not working
-    # sort returns think like ABAB
-    # but wanted result is AABB
-    # sort takes more arguments, look up in documentation
+
     to_return = []
     for offspring in offsprings:
-        sorted_offspring = sorted(list(offspring))
+        sorted_offspring = sorted(list(offspring), key= lambda x:(x.lower(),x))
         sorted_string = ''.join(sorted_offspring)
         to_return.append(sorted_string)
     to_return.sort()
