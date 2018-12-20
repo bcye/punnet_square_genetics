@@ -101,6 +101,10 @@ def blood_type(trait):
     elif trait == 'OO':
         return 0
 
+def split_geno(geno):
+	n = 2
+	return [geno[i:i+n] for i in range(0, len(geno), n)]
+
 # hair pigment exists (returns color)
 # hair no-pigment (returns NONE)
 def check_hair_both(pigment_trait, color_trait):
@@ -116,3 +120,27 @@ def run():
     mother_gametes = generate_gametes(mother_geno)
     offspring = prettify_offspring(generate_offsprings(father_gametes, mother_gametes))
     
+# enter everything into the two lists below
+father_gametes = []
+mother_gametes = []
+
+offsprings = generate_offsprings(father_gametes, mother_gametes)
+good_offs = prettify_offspring(offsprings)
+split_off = []
+for good_off in good_offs:
+	split_off.append(split_geno(good_off))
+phenotypes = []
+for off in split_off:
+	phenotype = []
+	phenotype.append(check_tall(off[0]))
+	phenotype.append(check_handed(off[1]))
+	phenotype.append(check_hair_both(off[3], off[2]))
+	phenotype.append(fur_color(off[4]))
+	phenotype.append(blood_type(off[5]))
+	phenotypes.append(phenotype)
+
+print(good_offs)
+print("\n")
+print("\n")
+print("\n")
+print(phenotypes)
