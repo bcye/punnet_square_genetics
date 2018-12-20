@@ -2,6 +2,7 @@
 def generate_gametes(genotype):
     pass
 
+
 # TODO: recognize phenotypes using given offspring functions
 
 # TODO: split genotypes into seperate traits
@@ -121,8 +122,8 @@ def run():
     offspring = prettify_offspring(generate_offsprings(father_gametes, mother_gametes))
     
 # enter everything into the two lists below
-father_gametes = []
-mother_gametes = []
+father_gametes = ["CNQFM","CNOFM","CNOLM","CNQLM","CnQFM","CnOFM","CnOLM","CnQLM"]
+mother_gametes = ["BnPFM","BnPGM","BnOFM","BnOGM","BnPFM","BnPGM","BnOFM","BnOGM"]
 
 offsprings = generate_offsprings(father_gametes, mother_gametes)
 good_offs = prettify_offspring(offsprings)
@@ -132,11 +133,11 @@ for good_off in good_offs:
 phenotypes = []
 for off in split_off:
 	phenotype = []
-	phenotype.append(check_tall(off[0]))
-	phenotype.append(check_handed(off[1]))
-	phenotype.append(check_hair_both(off[3], off[2]))
-	phenotype.append(fur_color(off[4]))
-	phenotype.append(blood_type(off[5]))
+	# phenotype.append(check_tall(off[0]))
+	phenotype.append(check_handed(off[0]))
+	phenotype.append(check_hair_both(off[2], off[1]))
+	phenotype.append(fur_color(off[3]))
+	phenotype.append(blood_type(off[4]))
 	phenotypes.append(phenotype)
 
 print(good_offs)
